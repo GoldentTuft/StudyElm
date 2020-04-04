@@ -50,6 +50,13 @@ myFoldr func ini list =
 
    > S.myFoldr2 [1, 2, 3, 4]
    [10,200,30,400] : List Int
+
+   > S.myFoldr2 []
+   [] : List Int
+   > S.myFoldr2 [1]
+   [1000] : List Int
+   > S.myFoldr2 [1, 2]
+   [10,200] : List Int
 -}
 
 
@@ -106,3 +113,26 @@ myFoldr4Helper i list =
 
         x :: xs ->
             String.repeat i x :: myFoldr4Helper (i + 1) xs
+
+
+
+{-
+   > S.myFoldr5 [1]
+   [100] : List Int
+   > S.myFoldr5 [1, 2]
+   [10,200] : List Int
+   > S.myFoldr5 [1, 2, 3]
+-}
+
+
+myFoldr5 : List Int -> List Int
+myFoldr5 list =
+    case list of
+        [] ->
+            []
+
+        x :: [] ->
+            [ x * 100 ]
+
+        x :: xs ->
+            x * 10 :: myFoldr5 xs
