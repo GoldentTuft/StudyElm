@@ -122,6 +122,7 @@ myFoldr4Helper i list =
    > S.myFoldr5 [1, 2]
    [10,200] : List Int
    > S.myFoldr5 [1, 2, 3]
+   [10,20,300] : List Int
 -}
 
 
@@ -136,3 +137,30 @@ myFoldr5 list =
 
         x :: xs ->
             x * 10 :: myFoldr5 xs
+
+
+
+{-
+   > S.myFoldr6 False [1, 2, 5, 5, 6, 7]
+   [1,2,5,5,11,12]
+-}
+
+
+myFoldr6 : Bool -> List Int -> List Int
+myFoldr6 flag list =
+    case list of
+        [] ->
+            []
+
+        x :: xs ->
+            case x of
+                5 ->
+                    x :: myFoldr6 True xs
+
+                _ ->
+                    case flag of
+                        True ->
+                            x + 5 :: myFoldr6 flag xs
+
+                        False ->
+                            x :: myFoldr6 flag xs
