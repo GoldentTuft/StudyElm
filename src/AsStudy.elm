@@ -5,7 +5,7 @@ import PiyoM as M
 
 
 hoge =
-    M.hoge 3
+    M.hoge 3 2
 
 
 piyo =
